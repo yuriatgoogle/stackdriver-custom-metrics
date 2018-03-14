@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title>Simple login</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">  </script>
+    <script>
+      $(document).ready(function(){
+        var metric_value;
+        $("#submit").click(function(){
+          metric_value=$("#metric_value").val();
+          $.post("http://localhost:8080/",{metric_value: metric_value}, function(data){
+            if(data==='done')
+              {
+                alert("success");
+              }
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Hello people !</h1>
+    <input type="TEXT" id="metric_value" size="40"><br>
+    <input type="button" id="submit" value="Submit">
+  </body>
+</html>
