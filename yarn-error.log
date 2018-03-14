@@ -1,0 +1,71 @@
+Arguments: 
+  /data/data/com.termux/files/usr/bin/node /data/data/com.termux/files/usr/bin/yarn remove grpc
+
+PATH: 
+  /data/data/com.termux/files/usr/bin:/data/data/com.termux/files/usr/bin/applets
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  8.10.0
+
+Platform: 
+  android x64
+
+npm manifest: 
+  {
+    "name": "stackdriver-custom-metrics",
+    "version": "1.0.0",
+    "description": "stackdriver custom metric example",
+    "repository": "https://github.com/yuriatgoogle/stackdriver-custom-metrics",
+    "private": false,
+    "scripts": {
+      "start": "GCLOUD_PROJECT=ygrinshteyn-sandbox node twitter-likes.js",
+      "test": "samples test app",
+      "cover": "nyc --cache npm test; nyc report --reporter=html"
+    },
+    "author": "Google Inc.",
+    "contributors": [
+      {
+        "name": "Yuri Grinshteyn",
+        "email": "ymg@google.com"
+      }
+    ],
+    "license": "Apache-2.0",
+    "semistandard": {
+      "globals": [
+        "after",
+        "afterEach",
+        "before",
+        "beforeEach",
+        "describe",
+        "it"
+      ]
+    },
+    "dependencies": {
+      "@google-cloud/pubsub": "^0.14.2",
+      "express": "^4.15.4",
+      "got": "^7.0.0",
+      "http": "0.0.0",
+      "sleep": "5.0.0",
+      "twit": "^2.2.9",
+      "twitter": "1.0.0"
+    },
+    "engines": {
+      "node": ">=4.3.2"
+    },
+    "main": "twitter-likes.js"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: No lockfile in this directory. Run `yarn install` to generate one.
+      at new MessageError (/data/data/com.termux/files/usr/lib/node_modules/yarn/lib/cli.js:186:110)
+      at /data/data/com.termux/files/usr/lib/node_modules/yarn/lib/cli.js:89389:13
+      at <anonymous>
