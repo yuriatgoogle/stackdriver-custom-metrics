@@ -15,7 +15,9 @@ app.use(bodyParser.json());
 // ----------- create custom metric for Stackdriver ------------
 //specify information for custom metric
 
-const request = {
+//todo - extract metric creation to separate .js file as function
+
+const createRequest = {
   name: client.projectPath(projectId),
   metricDescriptor: {
     description: 'Manually entered numeric value',
@@ -29,7 +31,7 @@ const request = {
 
 // Creates a custom metric descriptor
 client
-  .createMetricDescriptor(request)
+  .createMetricDescriptor(createRequest)
   .then(results => {
     const descriptor = results[0];
 
@@ -57,6 +59,51 @@ app.post('/',function(req,res){
   var metric_value=req.body.metric_value;
   //output value
   console.log("Metric value = "+metric_value);
+
+  //instantiate a data point
+  const dataPoint = {
+    interval: {
+      endTime: {
+        seconds: Date.now() / 1000,
+      },
+    },
+    value: {
+      doubleValue: 0,
+    },
+  };
+  // set value to write
+  dataPoint.value.doubleValue = metric_value;
+
+  //create time series
+  const timeSeriesData = {
+    metric: {
+      type: 'custom.googleapis.com/global/numeric_netric',
+    },
+    resource: {
+      type: 'global',
+      labels: {
+        project_id: projectId,
+      },
+    },
+    points: [dataPoint],
+  };
+
+  // create write request
+  const writeRequest = {
+    name: client.projectPath(projectId),
+    timeSeries: [timeSeriesData],
+  };
+
+  // Writes time series data
+  client
+  .createTimeSeries(writeRequest)
+  .then(results => {
+    console.log(`Done writing time series data.`, results[0]);
+  })
+  .catch(err => {
+    console.error('ERROR:', err);
+  });
+
   res.end("yes");
 });
 
