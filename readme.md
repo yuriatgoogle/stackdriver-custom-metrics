@@ -7,3 +7,8 @@ THIS IS NOT AN OFFICIAL GOOGLE PRODUCT
 ## How to use this repository
 
 WIP
+
+## TODOs
+
+Create load
+Update these instructions
