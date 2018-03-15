@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Simple login</title>
+    <title>Simple Input</title>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">  </script>
     <script>
       $(document).ready(function(){
@@ -8,6 +8,7 @@
         $("#submit").click(function(){
           metric_value=$("#metric_value").val();
           $.post("http://localhost:8080/",{metric_value: metric_value}, function(data){
+            alert("value sent!");
             if(data==='done')
               {
                 alert("success");
