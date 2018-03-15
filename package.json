@@ -5,7 +5,7 @@
   "repository": "https://github.com/yuriatgoogle/stackdriver-custom-metrics",
   "private": false,
   "scripts": {
-    "start": "GCLOUD_PROJECT=ygrinshteyn-sandbox node twitter-likes.js",
+    "start": "GCLOUD_PROJECT=ygrinshteyn-sandbox node server.js",
     "test": "samples test app",
     "cover": "nyc --cache npm test; nyc report --reporter=html"
   },
@@ -28,16 +28,12 @@
     ]
   },
   "dependencies": {
-    "@google-cloud/pubsub": "^0.14.2",
+    "@google-cloud/monitoring": "~0.4.1",
     "express": "^4.15.4",
-    "got": "^7.0.0",
-    "http": "0.0.0",
-    "sleep": "5.0.0",
-    "twit": "^2.2.9",
-    "twitter": "1.0.0"
+    "body-parser": "~1.18.2"
   },
   "engines": {
     "node": ">=4.3.2"
   },
-  "main": "twitter-likes.js"
+  "main": "server.js"
 }
