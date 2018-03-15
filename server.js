@@ -74,7 +74,6 @@ app.post('/',function(req,res){
   // set value to write
   dataPoint.value.doubleValue = metric_value;
   console.log("data point is " + dataPoint.value.doubleValue);
-  console.log("data point type is " + dataPoint.valueType);
 
   //create time series
   const timeSeriesData = {
