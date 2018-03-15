@@ -50,7 +50,7 @@ client
 
 //display form on get request
 app.get('/',function(req,res){
-  res.sendfile("index.html");
+  res.sendfile("index2.html");
 });
 
 // handle form submit
@@ -73,6 +73,8 @@ app.post('/',function(req,res){
   };
   // set value to write
   dataPoint.value.doubleValue = metric_value;
+  console.log("data point is " + dataPoint.value.doubleValue);
+  console.log("data point type is " + dataPoint.valueType);
 
   //create time series
   const timeSeriesData = {
@@ -104,7 +106,8 @@ app.post('/',function(req,res){
     console.error('ERROR:', err);
   });
 
-  res.end("yes");
+  //send user right back to entry page
+  res.sendfile("index2.html");
 });
 
 //start server
