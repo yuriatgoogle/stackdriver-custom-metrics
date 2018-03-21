@@ -6,10 +6,20 @@ THIS IS NOT AN OFFICIAL GOOGLE PRODUCT
 
 ## How to use this repository
 
-1. Install packages - npm install
-2. 
+1. To run locally:
+ - modify server.js to point to your own GCP project 
+ - gcloud init
+ - gcloud auth to establish credentials
+ - npm install to get the packages.
+ - node server.js to run
+ - log into Stackdriver and validate that the metric is being created and sent
+2. To run on App Engine Standard:
+ - modify server.js to point to your project
+ - gcloud app create
+ - gcloud app deploy
+ - gcloud app browse to test
 
 ## TODOs
 
-Create load
-Update these instructions
+1. Create load
+2. Update these instructions
