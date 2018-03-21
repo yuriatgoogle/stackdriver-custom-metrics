@@ -6,7 +6,8 @@ THIS IS NOT AN OFFICIAL GOOGLE PRODUCT
 
 ## How to use this repository
 
-WIP
+1. Install packages - npm install
+2. 
 
 ## TODOs
 
