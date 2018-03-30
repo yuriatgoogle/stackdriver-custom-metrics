@@ -1,0 +1,18 @@
+<html>
+    <head>
+      <title>Simple Input</title>
+    </head>
+    <body>
+        {% block content %}
+    <h1>Enter Value</h1>
+    <form action="" method="post" id="form">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.metric.label }}<br>
+            {{ form.metric(size=32) }}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endblock %}
+    </body>
+  </html>

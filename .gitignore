@@ -2,3 +2,10 @@ node_modules
 *.log
 .vscode
 *.yaml
+*.pyc
+bin
+include
+lib
+*.json
+.Python
+.gitignore
