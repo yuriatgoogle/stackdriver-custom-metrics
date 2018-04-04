@@ -21,5 +21,4 @@ THIS IS NOT AN OFFICIAL GOOGLE PRODUCT
 
 ## TODOs
 
-1. Create load
-2. Update these instructions
+1. Update these instructions for Python
