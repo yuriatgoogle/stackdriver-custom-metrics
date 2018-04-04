@@ -12,7 +12,7 @@ def index():
     client = monitoring.Client()
     if form.validate_on_submit():
         flash('value entered {}'.format(
-            form.metric.data))
+            form.metric.data)) # TODO - use flashed messages to write out value to page
         logging.warning('value entered is ' + (form.metric.data)) # log the input
         # TODO - call a function to send the metric to Stackdriver
         # ----- for now - doing it here
