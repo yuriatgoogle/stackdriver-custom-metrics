@@ -1,7 +1,7 @@
 from app import app
 from flask import render_template, redirect, flash
 import logging
-from google.cloud import monitoring
+from google.cloud import monitoring 
 from app.forms import PostForm
 logging.basicConfig(level=logging.DEBUG)
 
