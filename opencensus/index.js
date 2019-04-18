@@ -7,9 +7,6 @@ const {StackdriverStatsExporter} =
 
 // GCP setup - project and credentials
 const projectId = 'stack-doctor';
-// if (!projectId || !process.env.GOOGLE_APPLICATION_CREDENTIALS) {
-//     throw Error('Unable to proceed without a Project ID');
-// }
 
 // express imports and setup
 const express = require('express');
@@ -22,23 +19,20 @@ var latencyMeasurement;
 // stackdriver export config and metric setup
 const EXPORT_INTERVAL = 20;
 const LATENCY_MS = globalStats.createMeasureInt64(
-  'task_latency',
+  'stack-doctor-metric',
   MeasureUnit.MS,
-  'The task latency in milliseconds'
+  'custom metric for Stack Doctor'
 );
 
 // create and register the view
-const view = globalStats.createView(
-    'task_latency_distribution',
+const lastValueView = globalStats.createView(
+    'stack_doctor_metric',
     LATENCY_MS,
-    AggregationType.DISTRIBUTION,
+    AggregationType.LAST_VALUE,
     [],
-    'The distribution of the task latencies.',
-    // Latency in buckets:
-    // [>=0ms, >=100ms, >=200ms, >=400ms, >=1s, >=2s, >=4s]
-    [0, 100, 200, 400, 1000, 2000, 4000]
-  );
-globalStats.registerView(view);
+    'randomly generated value for Stack Doctor demo'
+);
+globalStats.registerView(lastValueView);
 
 // create the Stackdriver exporter and register it
 const exporter = new StackdriverStatsExporter({
@@ -48,14 +42,15 @@ const exporter = new StackdriverStatsExporter({
 globalStats.registerExporter(exporter);
 
 app.get('/', function (req, res) {
-    latencyMeasurement = 534;
+    // generate random value
+    latencyMeasurement = Math.floor(Math.random() * Math.floor(1000));
     globalStats.record([
         {
           measure: LATENCY_MS,
           value: latencyMeasurement,
         },
       ]);
-    res.send('Hello World!');
+    res.send('Value generated was ' + latencyMeasurement);
 });
     
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
