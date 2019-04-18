@@ -9,3 +9,4 @@ lib
 *.json
 .Python
 .gitignore
+.token
