@@ -6,7 +6,8 @@ const {StackdriverStatsExporter} =
     require('@opencensus/exporter-stackdriver');
 
 // GCP setup - project and credentials
-const projectId = 'stack-doctor';
+//const projectId = 'stack-doctor';
+const projectId = process.env.PROJECT_ID;
 
 // express imports and setup
 const express = require('express');

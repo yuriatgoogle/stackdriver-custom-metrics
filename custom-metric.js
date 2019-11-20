@@ -50,15 +50,11 @@ client
 
 //display form on get request
 app.get('/',function(req,res){
-  res.sendfile("index2.html");
-});
-
-// handle form submit
-app.post('/',function(req,res){
-  //get value
-  var metric_value=req.body.metric_value;
+  
+  //set value to write
+  var metric_value=Math.floor(Math.random() * Math.floor(10));
   //output value
-  console.log("Metric value = "+metric_value);
+  console.log("Metric value = " + metric_value);
 
   //instantiate a data point
   const dataPoint = {
@@ -106,7 +102,7 @@ app.post('/',function(req,res){
   });
 
   //send user right back to entry page
-  res.sendfile("index2.html");
+  res.send("wrote value: " + metric_value);
 });
 
 //start server
