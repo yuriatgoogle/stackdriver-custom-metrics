@@ -27,7 +27,7 @@ const LATENCY_MS = globalStats.createMeasureInt64(
 
 // create and register the view
 const lastValueView = globalStats.createView(
-    'stack_doctor_metric',
+    'opencensus_demo_metric',
     LATENCY_MS,
     AggregationType.LAST_VALUE,
     [],
@@ -39,6 +39,10 @@ globalStats.registerView(lastValueView);
 const exporter = new StackdriverStatsExporter({
     projectId: projectId,
     period: EXPORT_INTERVAL * 1000,
+    resource: {
+      container_name: "opencensus-server",
+      namespace_name: "default"
+    }
   });
 globalStats.registerExporter(exporter);
 
