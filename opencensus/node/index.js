@@ -8,6 +8,8 @@ const {StackdriverStatsExporter} =
 // GCP setup - project and credentials
 const projectId = 'stack-doctor';
 //const projectId = process.env.PROJECT_ID;
+process.env.CONTAINER_NAME = 'opencensus-server'
+process.env.NAMESPACE = 'default'
 
 // express imports and setup
 const express = require('express');

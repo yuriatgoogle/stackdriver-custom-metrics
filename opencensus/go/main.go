@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"math/rand"
 	"net/http"
 	"time"
 
@@ -66,6 +67,7 @@ func main() {
 }
 
 func HelloServer(w http.ResponseWriter, r *http.Request) {
-	stats.Record(context.Background(), goDemoMetric.M(100))
+
+	stats.Record(context.Background(), goDemoMetric.M(rand.Float64()))
 	fmt.Fprintf(w, "Hello!")
 }
